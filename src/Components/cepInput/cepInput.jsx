@@ -7,10 +7,8 @@ export default function cepInput() {
   const [value, setValue] = useState("");
   const [api, setApi] = useState({})
 
-  function handleAdicionar(e) {
-
-    e.preventDefault();
-
+  function handleAdicionar(event) {
+    event.preventDefault();
     const Api = async (cep) => {
       const cepString = cep.toString()
       const dadosApi = await fetch(`https://viacep.com.br/ws/${cepString}/json/`)
