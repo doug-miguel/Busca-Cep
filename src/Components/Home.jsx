@@ -7,7 +7,7 @@ import '../style/home.scss'
 const Home = () => {
   const [dados, setDados] = React.useState('')
   const [response, setResponse] = React.useState([])
-  const [error, setError] = React.useState(false)
+  const [error, setError] = React.useState(null)
   
   function handleSubmit (event) {
     event.preventDefault();
@@ -21,20 +21,20 @@ const Home = () => {
 
   function handleBlur() {
     if (dados.length === 0) {
-      setError(true);
+      setError("Digite um cep");
+      return true
     } else if (!/^\d{5}-?\d{3}$/.test(dados)) {
-      setError(true);
+      setError("Informe um cep valido");
+      return true
     } else {
-      setError(false);
+      setError(null);
+      return false
     }
   }
 
   function handleChange({ target }) {
-    if (error) {
-      setError(false)
-    } else {
+    if (error) setError(false)
       setDados(target.value)
-    }
   }
   
   return (
@@ -49,7 +49,7 @@ const Home = () => {
         onChange={handleChange}
         placeholder="00000-000"
       />
-      <p>{error && "Digite um cep validos"}</p>
+      {error && <p>{error}</p>}
       <Button title="Buscar"/>
     </form>
     { dados && response && <div>
