@@ -1,0 +1,23 @@
+.container {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  .cepInput {
+    display: grid;
+    border-radius: 15px;
+    text-align: center;
+    
+    label {
+      margin-bottom: 20px;
+      font-weight: bold;
+      font-size: 25px;
+    }
+    
+  }
+  .btnBusca {
+    padding: 15px;
+    border-radius: 15px;
+  }
+}
